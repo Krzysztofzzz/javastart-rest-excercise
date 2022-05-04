@@ -26,6 +26,13 @@ public class UserResource {
             return userService.findAll();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDto> findById(@PathVariable Long id){
+        return userService.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @PostMapping("")
     public ResponseEntity<UserDto> save(@RequestBody UserDto user) {
         if (user.getId() != null)

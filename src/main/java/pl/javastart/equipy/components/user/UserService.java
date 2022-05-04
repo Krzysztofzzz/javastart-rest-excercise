@@ -32,11 +32,15 @@ public class UserService {
 
     UserDto save(UserDto user) {
         Optional<User> userByPesel = userRepository.findByPesel(user.getPesel());
-        userByPesel.ifPresent(u ->{
+        userByPesel.ifPresent(u -> {
             throw new DuplicatePeselException();
         });
         User userEntity = UserMapper.toEntity(user);
         User savedUser = userRepository.save(userEntity);
         return UserMapper.toDto(savedUser);
+    }
+
+    Optional<UserDto> findById(Long id) {
+        return userRepository.findById(id).map(UserMapper::toDto);
     }
 }
