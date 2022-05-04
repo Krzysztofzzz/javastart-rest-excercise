@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package pl.javastart.equipy.components.user;
+=======
+package pl.javastart.equipy;
+>>>>>>> 340ecb7048c0f48fff224acc2070c8b38fb83786
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
