@@ -16,7 +16,7 @@ public class UserResource {
     }
 
     @GetMapping("")
-    List<UserDto> findAll(){
+    List<UserDto> findAll() {
         return userService.findAll();
     }
 }
