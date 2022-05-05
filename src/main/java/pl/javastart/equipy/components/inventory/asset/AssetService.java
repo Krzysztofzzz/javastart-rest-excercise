@@ -22,4 +22,11 @@ public class AssetService {
                 .map(assetMapper::toDto)
                 .collect(Collectors.toList());
     }
+
+    List<AssetDto> findAllByNameOrSerialNumber(String search){
+        return assetRepository.findAllByNameOrSerialNumber(search)
+                .stream()
+                .map(assetMapper::toDto)
+                .collect(Collectors.toList());
+    }
 }

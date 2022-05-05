@@ -2,6 +2,7 @@ package pl.javastart.equipy.components.inventory.asset;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -17,7 +18,11 @@ public class AssetResource {
     }
 
     @GetMapping("")
-    public List<AssetDto> findAll() {
-        return assetService.findAll();
+    public List<AssetDto> findAll(@RequestParam(required = false) String text) {
+        if (text == null)
+            return assetService.findAll();
+        else
+            return assetService.findAllByNameOrSerialNumber(text);
+
     }
 }
