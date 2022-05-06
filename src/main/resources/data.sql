@@ -20,3 +20,8 @@ insert into asset(id, name, description, serial_number, category_id) values
   (8, 'Apple iPhone 8', 'Telefon z zestawem s?uchawkowym lightning i ?adowark?', 'APL8185652HGT7', 2),
   (9, 'Opel Insignia GSi', 'Samoch?d osobowy, 6 biegowa automatyczna skrzynia bieg?w, benzynowy silnik 2.0', 'XHG78K64', 3),
   (10, 'Ford Focus', 'Samoch?d osobowy, 5 biegowa manualna skrzynia bieg?w, silnik diesel 1.6', 'M24HP88GYJ', 3);
+
+insert into assignment(id, start, end, asset_id, user_id) values
+  (1, '2017-10-08 15:00:00', '2018-10-08 15:00:00', 1, 1),
+  (2, '2018-10-09 12:00:00', null, 5, 1),
+  (3, '2018-10-10 16:00:00', null, 9, 1);

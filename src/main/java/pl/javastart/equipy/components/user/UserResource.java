@@ -26,13 +26,6 @@ public class UserResource {
             return userService.findAll();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<UserDto> findById(@PathVariable Long id) {
-        return userService.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
-
     @PostMapping("")
     public ResponseEntity<UserDto> save(@RequestBody UserDto user) {
         if (user.getId() != null)
@@ -46,11 +39,23 @@ public class UserResource {
         return ResponseEntity.created(location).body(savedUser);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDto> findById(@PathVariable Long id) {
+        return userService.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<UserDto> update(@PathVariable Long id, @RequestBody UserDto user) {
         if (!id.equals(user.getId()))
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Aktualizowany obiekt musi id zgodne z id w ścieżce zasobu");
         UserDto updatedUser = userService.update(user);
         return ResponseEntity.ok(updatedUser);
+    }
+
+    @GetMapping("/{id}/assignments")
+    public List<UserAssignmentDto> getUserAssignments(@PathVariable Long id) {
+        return userService.getUserAssignments(id);
     }
 }
