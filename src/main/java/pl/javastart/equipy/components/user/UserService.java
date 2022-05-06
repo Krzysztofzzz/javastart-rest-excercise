@@ -2,6 +2,7 @@ package pl.javastart.equipy.components.user;
 
 import org.springframework.stereotype.Service;
 import pl.javastart.equipy.components.exceptions.DuplicatePeselException;
+import pl.javastart.equipy.components.exceptions.UserNotFoundException;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,10 +24,23 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
+    Optional<UserDto> findById(Long id) {
+        return userRepository.findById(id).map(UserMapper::toDto);
+    }
+
     List<UserDto> findByLastName(String lastName) {
         return userRepository.findAllByLastNameContainingIgnoreCase(lastName)
                 .stream()
                 .map(UserMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    List<UserAssignmentDto> getUserAssignments(Long userId) {
+        return userRepository.findById(userId)
+                .map(User::getAssignments)
+                .orElseThrow(UserNotFoundException::new)
+                .stream()
+                .map(UserAssignmentMapper::toDto)
                 .collect(Collectors.toList());
     }
 
@@ -47,13 +61,9 @@ public class UserService {
         return mapAndSaveUser(user);
     }
 
-    private UserDto mapAndSaveUser(UserDto user){
+    private UserDto mapAndSaveUser(UserDto user) {
         User userEntity = UserMapper.toEntity(user);
         User savedUser = userRepository.save(userEntity);
         return UserMapper.toDto(savedUser);
-    }
-
-    Optional<UserDto> findById(Long id) {
-        return userRepository.findById(id).map(UserMapper::toDto);
     }
 }
