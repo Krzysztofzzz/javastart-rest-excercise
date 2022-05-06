@@ -32,6 +32,10 @@ public class AssetService {
                 .collect(Collectors.toList());
     }
 
+    Optional<AssetDto> findById(Long id) {
+        return assetRepository.findById(id).map(assetMapper::toDto);
+    }
+
     AssetDto save(AssetDto assetDto) {
         Optional<Asset> assetBySerialNumber = assetRepository.findBySerialNumber(assetDto.getSerialNumber());
         assetBySerialNumber.ifPresent(a -> {

@@ -28,9 +28,9 @@ public class AssetResource {
     }
 
     @PostMapping("")
-    public ResponseEntity<AssetDto> save(@RequestBody AssetDto assetDto){
+    public ResponseEntity<AssetDto> save(@RequestBody AssetDto assetDto) {
         if (assetDto.getId() != null)
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Zapisywany obiekt nie może mieć ustawionego id");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Zapisywany obiekt nie może mieć ustawionego id");
         AssetDto savedAsset = assetService.save(assetDto);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -38,5 +38,12 @@ public class AssetResource {
                 .buildAndExpand(savedAsset.getId())
                 .toUri();
         return ResponseEntity.created(location).body(savedAsset);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<AssetDto> findById(@PathVariable Long id) {
+        return assetService.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 }
