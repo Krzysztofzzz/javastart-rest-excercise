@@ -5,7 +5,7 @@ import pl.javastart.equipy.components.user.User;
 
 public class AssetAssignmentMapper {
 
-    AssetAssignmentDto toDto(Assignment assignment) {
+    static AssetAssignmentDto toDto(Assignment assignment) {
         AssetAssignmentDto dto = new AssetAssignmentDto();
         dto.setId(assignment.getId());
         dto.setStart(assignment.getStart());

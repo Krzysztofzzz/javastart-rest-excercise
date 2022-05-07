@@ -1,6 +1,7 @@
 package pl.javastart.equipy.components.inventory.asset;
 
 import org.springframework.stereotype.Service;
+import pl.javastart.equipy.components.exceptions.AssetNotFoundException;
 import pl.javastart.equipy.components.exceptions.DuplicateSerialNumberException;
 
 import java.util.List;
@@ -34,6 +35,15 @@ public class AssetService {
 
     Optional<AssetDto> findById(Long id) {
         return assetRepository.findById(id).map(assetMapper::toDto);
+    }
+
+    List<AssetAssignmentDto> getAssetAssignments(Long id) {
+        return assetRepository.findById(id)
+                .map(Asset::getAssignments)
+                .orElseThrow(AssetNotFoundException::new)
+                .stream()
+                .map(AssetAssignmentMapper::toDto)
+                .collect(Collectors.toList());
     }
 
     AssetDto save(AssetDto assetDto) {
