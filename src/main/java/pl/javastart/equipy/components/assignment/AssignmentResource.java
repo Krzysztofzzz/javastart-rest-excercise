@@ -2,15 +2,13 @@ package pl.javastart.equipy.components.assignment;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import pl.javastart.equipy.components.exceptions.InvalidAssignmentException;
 
 import java.net.URI;
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/api/assignments")
@@ -36,6 +34,12 @@ public class AssignmentResource {
                 .buildAndExpand(savedAssignment.getId())
                 .toUri();
         return ResponseEntity.created(location).body(savedAssignment);
+    }
+
+    @PostMapping("/{id}/end")
+    public ResponseEntity finishAssignment(@PathVariable Long id) {
+        LocalDateTime endDate = assignmentService.finishAssignment(id);
+        return ResponseEntity.accepted().body(endDate);
     }
 
 }
