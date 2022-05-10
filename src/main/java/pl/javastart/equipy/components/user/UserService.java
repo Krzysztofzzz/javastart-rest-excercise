@@ -1,8 +1,6 @@
 package pl.javastart.equipy.components.user;
 
 import org.springframework.stereotype.Service;
-import pl.javastart.equipy.components.exceptions.DuplicatePeselException;
-import pl.javastart.equipy.components.exceptions.UserNotFoundException;
 
 import java.util.List;
 import java.util.Optional;

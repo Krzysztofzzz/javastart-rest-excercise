@@ -5,7 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import pl.javastart.equipy.components.exceptions.InvalidAssignmentException;
 
 import java.net.URI;
 import java.time.LocalDateTime;

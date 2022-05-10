@@ -1,8 +1,7 @@
 package pl.javastart.equipy.components.inventory.asset;
 
 import org.springframework.stereotype.Service;
-import pl.javastart.equipy.components.exceptions.AssetNotFoundException;
-import pl.javastart.equipy.components.exceptions.DuplicateSerialNumberException;
+import pl.javastart.equipy.components.user.DuplicateSerialNumberException;
 
 import java.util.List;
 import java.util.Optional;

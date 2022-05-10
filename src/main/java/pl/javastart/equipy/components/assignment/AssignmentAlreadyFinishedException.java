@@ -1,4 +1,4 @@
-package pl.javastart.equipy.components.exceptions;
+package pl.javastart.equipy.components.assignment;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

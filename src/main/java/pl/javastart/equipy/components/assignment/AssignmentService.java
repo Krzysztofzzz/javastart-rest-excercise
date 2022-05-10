@@ -1,9 +1,6 @@
 package pl.javastart.equipy.components.assignment;
 
 import org.springframework.stereotype.Service;
-import pl.javastart.equipy.components.exceptions.AssignmentAlreadyFinishedException;
-import pl.javastart.equipy.components.exceptions.AssignmentNotFoundException;
-import pl.javastart.equipy.components.exceptions.InvalidAssignmentException;
 import pl.javastart.equipy.components.inventory.asset.Asset;
 import pl.javastart.equipy.components.inventory.asset.AssetRepository;
 import pl.javastart.equipy.components.user.User;
