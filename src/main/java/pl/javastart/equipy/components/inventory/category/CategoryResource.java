@@ -10,7 +10,7 @@ import java.util.List;
 @RequestMapping("/api/categories")
 public class CategoryResource {
 
-    private CategoryService categoryService;
+    private final CategoryService categoryService;
 
     public CategoryResource(CategoryService categoryService) {
         this.categoryService = categoryService;

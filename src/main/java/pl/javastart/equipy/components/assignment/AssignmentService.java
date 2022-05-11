@@ -12,9 +12,9 @@ import java.util.Optional;
 
 @Service
 public class AssignmentService {
-    private AssignmentRepository assignmentRepository;
-    private AssetRepository assetRepository;
-    private UserRepository userRepository;
+    private final AssignmentRepository assignmentRepository;
+    private final AssetRepository assetRepository;
+    private final UserRepository userRepository;
 
     public AssignmentService(AssignmentRepository assignmentRepository, AssetRepository assetRepository, UserRepository userRepository) {
         this.assignmentRepository = assignmentRepository;

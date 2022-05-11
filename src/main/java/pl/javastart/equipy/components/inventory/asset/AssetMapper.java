@@ -8,13 +8,13 @@ import java.util.Optional;
 
 @Service
 public class AssetMapper {
-    private CategoryRepository categoryRepository;
+    private final CategoryRepository categoryRepository;
 
     public AssetMapper(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
 
-    AssetDto toDto(Asset asset){
+    AssetDto toDto(Asset asset) {
         AssetDto assetDto = new AssetDto();
         assetDto.setId(asset.getId());
         assetDto.setName(asset.getName());
@@ -25,7 +25,7 @@ public class AssetMapper {
         return assetDto;
     }
 
-    Asset toEntity(AssetDto assetDto){
+    Asset toEntity(AssetDto assetDto) {
         Asset asset = new Asset();
         asset.setId(assetDto.getId());
         asset.setName(assetDto.getName());

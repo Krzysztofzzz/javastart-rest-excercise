@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @RequestMapping("/api/assignments")
 public class AssignmentResource {
 
-    private AssignmentService assignmentService;
+    private final AssignmentService assignmentService;
 
     public AssignmentResource(AssignmentService assignmentService) {
         this.assignmentService = assignmentService;
