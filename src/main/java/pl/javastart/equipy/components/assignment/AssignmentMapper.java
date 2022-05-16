@@ -4,7 +4,6 @@ import pl.javastart.equipy.components.inventory.asset.Asset;
 import pl.javastart.equipy.components.user.User;
 
 public class AssignmentMapper {
-
     static AssignmentDto toDto(Assignment assignment) {
         AssignmentDto dto = new AssignmentDto();
         User user = assignment.getUser();
